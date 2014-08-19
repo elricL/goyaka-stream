@@ -104,9 +104,10 @@ window.player_ready =  (player) ->
       console.log "Start notif"
       chrome.notifications.create "" ,
         type : "basic"
-        title : window.feed_items[@index].name
+        title : "Now Playing"
         iconUrl : window.feed_items[@index].picture
-      , (notification_id) ->  console.log "end not id" + notification_id
+        message : window.feed_items[@index].name
+      , (notification_id) ->  console.log "end not id"
       console.log "end not"
       window.player.loadVideoById id
     else
@@ -114,6 +115,17 @@ window.player_ready =  (player) ->
     return
 
   return
+
+chrome.commands.onCommand.addListener((command) ->
+  switch command
+    when "toggle-play"
+      console.log player.state + "ZZZZZZZZZZZ"
+      if player.state==1
+        player.pauseVideo()
+      else
+        player.playVideo()
+    when "next-song" then player.playNext()
+)
 
 refetchWholeList = (cb) ->
   loadPlayList goyakaRadioFeedUrl, cb, ->

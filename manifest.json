@@ -1,9 +1,8 @@
 {
-    "manifest_version": 2,
-
     "name": "Goyaka Stream",
     "description": "A simple chrome app experiment to play goyaka playlist songs",
     "version": "1.0",
+    "manifest_version" : 2,
 
     "permissions": [
         "storage",
@@ -13,11 +12,24 @@
         "webRequestBlocking",
         "notifications",
         "*://*.youtube.com/*",
-        "*://*.facebook.com/*"
+        "*://*.facebook.com/*",
+        "*://*.fbexternal-a.akamaihd.net/*"
     ],
     "browser_action": {
         "default_icon": "radio.png",
         "default_popup": "popup.html"
+    },
+    "commands" : {
+        "toggle-play": {
+          "suggested_key": { "default": "MediaPlayPause" },
+          "description": "Play/Pause the current song",
+          "global" : true
+        },
+       "next-song": {
+          "suggested_key": { "default": "MediaNextTrack" },
+          "description": "Next track",
+          "global" : true
+        } 
     },
     "background": {
         "page": "background.html"
