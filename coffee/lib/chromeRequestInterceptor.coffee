@@ -1,4 +1,5 @@
 chrome.webRequest.onBeforeSendHeaders.addListener ((info) ->
+  console.log "INTERCEPTED"
   
   #  Bypass YouTube's embedded player content restrictions by provided a value for Referer.
   refererRequestHeader = _.find(info.requestHeaders, (requestHeader) ->
@@ -27,7 +28,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener ((info) ->
 ),
   
   #urls: ['*://*.youtube.com/embed/?enablejsapi=1&origin=chrome-extension%3A%2F%2Fjbnkffmindojffecdhbbmekbmkkfpmjd']
-  urls: ["*://*.youtube.com/embed/?enablejsapi=1&origin=chrome-extension:\\\\"]
+  urls: ['*://*.youtube.com/embed/*?enablejsapi=1&origin=chrome-extension*fafnmlmmbmfemgmjailojceblnjpgcli']
 , [
   "blocking"
   "requestHeaders"

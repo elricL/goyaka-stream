@@ -17,7 +17,7 @@ window.fetch_access_token = (cb)->
   chrome.identity.launchWebAuthFlow options ,(data)->
     console.log data
     getAccessTokenFromURL data
-    cb()
+    cb(window.access_token)
 
 window.getFeeds = (cb) ->
   if window.feed_items.length is 0
@@ -90,6 +90,7 @@ window.youtubeStageChange = (event) ->
   return
 window.player_ready =  (player) ->
   window.player = player
+
   window.player.playNext = ->
     @index++
     window.player.play @index
@@ -100,6 +101,13 @@ window.player_ready =  (player) ->
     id = getIdFromUrl(window.feed_items[index].link)
     changeCallback index
     if id
+      console.log "Start notif"
+      chrome.notifications.create "" ,
+        type : "basic"
+        title : window.feed_items[@index].name
+        iconUrl : window.feed_items[@index].picture
+      , (notification_id) ->  console.log "end not id" + notification_id
+      console.log "end not"
       window.player.loadVideoById id
     else
       youtubeError data: 150

@@ -26,21 +26,24 @@ window.mainController = ($scope,$http) ->
 
   $scope.getFBData = ->
     id = $scope.getCurrentItem().id
-    url = graph_api_prefix + id + "?access_token=" + back.access_token
-    promise = $http 
-      url : url
-      method : "GET"
-    promise.success (data)->
-      $scope.currentData = data
+    back.fetch_access_token (access_token) ->
+      url = graph_api_prefix + id + "?access_token=" + back.access_token
+      promise = $http 
+        url : url
+        method : "GET"
+      promise.success (data)->
+        $scope.currentData = data
+      promise.error (data) ->
+        console.log "access_token error" + data
 
-  if player and player.index
-    $scope.song_index = player.index
-  else
-    $scope.song_index = 0
-  if player and player.state
-    $scope.state = player.state
-  else
-    $scope.state = 0
+    if player and player.index
+      $scope.song_index = player.index
+    else
+      $scope.song_index = 0
+    if player and player.state
+      $scope.state = player.state
+    else
+      $scope.state = 0
   $scope.numberOfPages = ->
     Math.ceil $scope.data.length / $scope.pageSize
 
@@ -66,6 +69,7 @@ window.mainController = ($scope,$http) ->
     back.feed_items = $scope.data
     return
 
+  window.zoozoo = $scope.sortByLike
   $scope.getRowColor = (index) ->
     "bg-primary"  if $scope.song_index is ($scope.currentPage * $scope.pageSize + index)
 
