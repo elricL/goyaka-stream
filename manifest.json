@@ -1,7 +1,7 @@
 {
     "name": "Goyaka Stream",
     "description": "A simple chrome app experiment to play goyaka playlist songs",
-    "version": "1.0",
+    "version": "1.1",
     "manifest_version" : 2,
 
     "permissions": [
@@ -31,7 +31,6 @@
           "global" : true
         } 
     },
-    "key" : "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA13iLc+yqg0P1ltqbixSscndC0vwbtBa+GRMdTWWlcCTfwBPb110XsaYyjwm7xiWPzdUov+XD3gQTVdOE6YH2hD/chtBAZAX0XhD14C8STiTc3Z9wwQ6cCbf6uvSDeNRiUYAiVFzemMllGUa+7og3NTEyW+PoBuP55wEDg8vcj6R91y53Htga84Z1SXujXWLoeo8PeO4BJBvPmt8J9Y3pMXNP5jBg8aBl4lun/H6voqIHH8qKTXXl8/WeWX6mijjNIrgj2Ki3ZcWL/WPazGLq+UnnK9QaKCqB6jjkRVA5yc6T518pVV2pqWd2JxA6qUqEQVEL1jHRnZkYnBOcjTwjSwIDAQAB",
     "background": {
         "page": "background.html"
     },
