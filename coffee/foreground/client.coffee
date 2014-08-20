@@ -68,6 +68,15 @@ window.mainController = ($scope,$http) ->
     )
     back.feed_items = $scope.data
     return
+  $scope.sortByRecent = ->
+    $scope.data = _.sortBy($scope.data, (item) ->
+      if item["updated_time"]
+        -1 * new Date(item["updated_time"])
+      else
+        0
+    )
+    back.feed_items = $scope.data
+    return
 
   window.zoozoo = $scope.sortByLike
   $scope.getRowColor = (index) ->
