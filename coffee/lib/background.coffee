@@ -1,7 +1,7 @@
+FB_APP_ID = 1451598008439936
 goyakaRadioFeedUrl = "https://graph.facebook.com/v2.0/187054981393266/feed?fields=comments.limit(1).summary(true),likes.limit(1).summary(true),link,message,picture,name&limit=10000"
-webAuthFlowUrl = "https://www.facebook.com/dialog/oauth?client_id=1494525657425885&redirect_uri=" + 'https://' + chrome.runtime.id + '.chromiumapp.org/provider_cb' +"&response_type=token"
+webAuthFlowUrl = "https://www.facebook.com/dialog/oauth?client_id="+ FB_APP_ID + "&redirect_uri=" + 'https://' + chrome.runtime.id + '.chromiumapp.org/provider_cb' +"&response_type=token"
 
-FB_APP_ID = 1494525657425885
 window.access_token = undefined
 window.feed_items = []
 window.errCallBack = undefined
